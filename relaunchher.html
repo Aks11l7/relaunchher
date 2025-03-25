@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReLaunchHer | Empowering Women Returning to Work</title>
+    
+    <link rel="icon" href="Screenshot 2025-03-08 132807.png" type="image/png">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #8e44ad;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8e44ad;
+        }
+        
+        .logo span {
+            color: #333;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #6c3483;
+        }
+        
+        .btn {
+            background-color: #8e44ad;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #6c3483;
+            color: white;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 8rem 5% 5rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: #8e44ad;
+        }
+        
+        /* Features section */
+        .features {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            background-color: #f7f2fa;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: #8e44ad;
+            font-size: 1.8rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        /* Services section */
+        .services {
+            background-color: #f9f9f9;
+            padding: 5rem 5%;
+        }
+        
+        .services-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .service-info {
+            padding: 1.5rem;
+        }
+        
+        .service-info h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .service-info p {
+            margin-bottom: 1.2rem;
+            color: #666;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA section */
+        .cta {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 4rem 5% 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="Screenshot 2025-03-08 132807.png" alt="ReLaunchHer Logo">
+                Re<span>LaunchHer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="relaunchher.html">Home</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="signup.html" class="btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Empowering Your Return to the Workforce</h1>
+            <p>ReLaunchHer helps women confidently restart their careers after maternity leave or career breaks with personalized job matching, skill development, and a supportive community.</p>
+            <div class="hero-buttons">
+                <a href="jobs.html" class="btn">Find Opportunities</a>
+                <a href="community.html" class="btn-secondary">Join Our Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-title">
+            <h2>How We Support Your Journey Back</h2>
+            <p>We understand the unique challenges women face when returning to work, and we're here to help every step of the way.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Skills Assessment</h3>
+                <p>Identify your strengths and areas for growth with our comprehensive skills assessment tools specifically designed for returners.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Personalized Job Matching</h3>
+                <p>Our algorithm connects you with employers who value your experience and offer flexible working arrangements.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Upskilling Programs</h3>
+                <p>Access tailored courses and workshops to refresh your skills and learn the latest industry developments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Mentorship Network</h3>
+                <p>Connect with successful professionals who have navigated their own return-to-work journeys.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Resume Building</h3>
+                <p>Get expert guidance on how to present your career break and highlight transferable skills to potential employers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>Interview Preparation</h3>
+                <p>Practice with mock interviews and receive feedback to help you approach interviews with confidence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="services-content">
+            <div class="section-title">
+                <h2>Our Programs</h2>
+                <p>Tailored solutions to meet you where you are in your return-to-work journey.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">Returnship Programs</div>
+                    <div class="service-info">
+                        <h3>Returnship Programs</h3>
+                        <p>Paid opportunities with partner companies specifically designed for professionals returning after a career break.</p>
+                        <a href="#">Learn More →</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">Flexible Work Directory</div>
+                    <div class="service-info">
+                        <h3>Flexible Work Directory</h3>
+                        <p>Browse our curated collection of part-time, remote, and job-share opportunities with family-friendly employers.</p>
+                        <a href="#">Explore Jobs →</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">Career Transition Coaching</div>
+                    <div class="service-info">
+                        <h3>Career Transition Coaching</h3>
+                        <p>One-on-one guidance to help you navigate your return, set goals, and develop strategies for success.</p>
+                        <a href="#">Book a Session →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>Success Stories</h2>
+            <p>Hear from women who have successfully restarted their careers through ReLauncher.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"After 4 years away from my marketing career, I was terrified of the gaps in my knowledge. ReLauncher helped me identify transferable skills from my parenting experience and connected me with a company that values work-life balance."</p>
+                <div class="testimonial-author">
+                    <div class="author-img">Photo</div>
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Marketing Director, returned after 4-year break</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The skills assessment helped me realize I wanted to pivot to a new field altogether. The upskilling courses gave me confidence, and the mentorship was invaluable. I'm now in a role I love with flexibility for my family."</p>
+                <div class="testimonial-author">
+                    <div class="author-img">Photo</div>
+                    <div class="author-info">
+                        <h4>Michelle Lee</h4>
+                        <p>Project Manager, career changer after 3-year break</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I was worried my technical skills were outdated after my maternity leave. The returnship program gave me a chance to prove myself, refresh my skills, and ultimately land a permanent position that respects my need for work-life balance."</p>
+                <div class="testimonial-author">
+                    <div class="author-img">Photo</div>
+                    <div class="author-info">
+                        <h4>Priya Sharma</h4>
+                        <p>Software Developer, returned after 2-year break</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Ready to Restart Your Career Journey?</h2>
+            <p>Join thousands of women who have successfully returned to fulfilling careers with the support of our platform and community.</p>
+            <a href="profile.html" class="btn">Create Your Free Profile Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ReLaunchHer</h3>
+                <p>Empowering women to return to work with confidence, skills, and support.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="relaunchher.html">Home</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Career Assessment</a></li>
+                    <li><a href="#">Skill Development</a></li>
+                    <li><a href="#">Interview Prep</a></li>
+                    <li><a href="#">Resume Workshop</a></li>
+                    <li><a href="#">Childcare Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#">info@reLaunchher.com</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Partnerships</a></li>
+                    <li><a href="#">Employers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ReLaunchHer. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReLaunchHer | Empowering Women Returning to Work</title>
+    <link rel="icon" href="Screenshot 2025-03-08 132807.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8e44ad;
+            --primary-dark: #6c3483;
+            --primary-light: #9b59b6;
+            --primary-lighter: #f7f2fa;
+            --dark: #333;
+            --light: #f9f9f9;
+            --white: #ffffff;
+            --gray: #666;
+            --light-gray: #ddd;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.3s, transform 0.3s;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--dark);
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(142, 68, 173, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(142, 68, 173, 0.3);
+            color: var(--white);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 10rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background-image: url('/api/placeholder/600/800');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            border-radius: 0 0 0 100%;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: -5rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        /* Features section */
+        .features {
+            background-color: var(--white);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 50px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(142, 68, 173, 0.1);
+            border-bottom: 4px solid var(--primary);
+        }
+        
+        .feature-icon {
+            background-color: var(--primary-lighter);
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card a {
+            margin-top: auto;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-card a i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card a:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Programs section */
+        .programs {
+            background-color: var(--light);
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .program-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(142, 68, 173, 0.15);
+        }
+        
+        .program-img {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
+        }
+        
+        .program-info {
+            padding: 2rem;
+        }
+        
+        .program-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .program-info p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .program-info a {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .program-info a i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+
+        .program-info a:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(142, 68, 173, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-size: 1.2rem;
+        }
+
+        .cta-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 40px;
+            overflow: hidden;
+        }
+
+        .cta-form input {
+            flex: 1;
+            padding: 1.2rem 2rem;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-form input:focus {
+            outline: none;
+        }
+
+        .cta-form button {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 1.2rem 2rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-form button:hover {
+            background-color: #5b2d6e;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 5rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-column p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                margin: 0 auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                grid-row: 1;
+                margin-bottom: 2rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.3s;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta-form {
+                flex-direction: column;
+                border-radius: 15px;
+            }
+
+            .cta-form input, .cta-form button {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="Screenshot 2025-03-08 132807.png" alt="ReLaunchHer Logo">
+                    Re<span>LaunchHer</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="relaunchher.html">Home</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="signup.html" class="btn">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Empowering Your Return to the Workforce</h1>
+                    <p>ReLaunchHer helps women confidently restart their careers after maternity leave or career breaks with personalized job matching, skill development, and a supportive community.</p>
+                    <div class="hero-buttons">
+                        <a href="jobs.html" class="btn">Find Opportunities</a>
+                        <a href="community.html" class="btn-secondary">Join Our Community</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/500/400" alt="Women returning to work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-num">5,000+</div>
+                <div class="stat-text">Women Supported</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">750+</div>
+                <div class="stat-text">Partner Companies</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">85%</div>
+                <div class="stat-text">Success Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">100+</div>
+                <div class="stat-text">Skill Courses</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <div class="section-header">
+                <h2>How We Support Your Journey Back</h2>
+                <p>We understand the unique challenges women face when returning to work, and we're here to help every step of the way.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Skills Assessment</h3>
+                    <p>Identify your strengths and areas for growth with our comprehensive skills assessment tools specifically designed for returners.</p>
+                    <a href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
+                    <h3>Personalized Job Matching</h3>
+                    <p>Our algorithm connects you with employers who value your experience and offer flexible working arrangements.</p>
+                    <a href="#">Explore Jobs <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Upskilling Programs</h3>
+                    <p>Access tailored courses and workshops to refresh your skills and learn the latest industry developments.</p>
+                    <a href="#">Browse Courses <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Mentorship Network</h3>
+                    <p>Connect with successful professionals who have navigated their own return-to-work journeys.</p>
+                    <a href="#">Find Mentors <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Resume Building</h3>
+                    <p>Get expert guidance on how to present your career break and highlight transferable skills to potential employers.</p>
+                    <a href="#">Get Started <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Interview Preparation</h3>
+                    <p>Practice with mock interviews and receive feedback to help you approach interviews with confidence.</p>
+                    <a href="#">Book Session <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section programs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Programs</h2>
+                <p>Tailored solutions to meet you where you are in your return-to-work journey.</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="/api/placeholder/600/400" alt="Returnship Programs">
+                    </div>
+                    <div class="program-info">
+                        <h3>Returnship Programs</h3>
+                        <p>Paid opportunities with partner companies specifically designed for professionals returning after a career break.</p>
+                        <a href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="/api/placeholder/600/400" alt="Flexible Work Directory">
+                    </div>
+                    <div class="program-info">
+                        <h3>Flexible Work Directory</h3>
+                        <p>Browse our curated collection of part-time, remote, and job-share opportunities with family-friendly employers.</p>
+                        <a href="#">Explore Jobs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="/api/placeholder/600/400" alt="Career Transition Coaching">
+                    </div>
+                    <div class="program-info">
+                        <h3>Career Transition Coaching</h3>
+                        <p>One-on-one guidance to help you navigate your return, set goals, and develop strategies for success.</p>
+                        <a href="#">Book a Session <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Hear from women who have successfully restarted their careers through ReL

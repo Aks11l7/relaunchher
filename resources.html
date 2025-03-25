@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | ReLaunchHer</title>
+    <link rel="icon" href="Screenshot 2025-03-08 132807.png" type="image/png">
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #8e44ad;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8e44ad;
+        }
+        
+        .logo span {
+            color: #333;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #6c3483;
+        }
+        
+        .btn {
+            background-color: #8e44ad;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #6c3483;
+            color: white;
+        }
+        
+        /* Page header */
+        .page-header {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 8rem 5% 5rem;
+            text-align: center;
+        }
+        
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Resource Categories Navigation */
+        .resource-nav {
+            background-color: #f5f0f7;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .resource-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .resource-nav a {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .resource-nav a:hover, .resource-nav a.active {
+            background-color: #8e44ad;
+            color: white;
+        }
+        
+        /* Resource sections */
+        .resource-section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #8e44ad;
+        }
+        
+        .section-title p {
+            color: #666;
+        }
+        
+        /* Resource cards */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-card-img {
+            height: 180px;
+            background-color: #f7f2fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8e44ad;
+            font-size: 3rem;
+        }
+        
+        .resource-card-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-card h3 {
+            margin-bottom: 0.8rem;
+            color: #8e44ad;
+        }
+        
+        .resource-card p {
+            margin-bottom: 1.2rem;
+            color: #666;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        
+        /* List resources */
+        .resource-list {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .list-title {
+            font-size: 1.4rem;
+            color: #8e44ad;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0e6f6;
+        }
+        
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #f7f2fa;
+            color: #8e44ad;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .step-list h4 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .step-list p {
+            color: #666;
+        }
+        
+        /* Tips and useful links */
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tip-card {
+            background-color: #f9f9f9;
+            border-left: 3px solid #8e44ad;
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+        
+        .tip-card h4 {
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+        
+        .links-list {
+            list-style: none;
+        }
+        
+        .links-list li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .links-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .links-list h4 {
+            margin-bottom: 0.3rem;
+        }
+        
+        .links-list p {
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Community section */
+        .join-community {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .join-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .join-community h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .join-community p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 4rem 5% 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .resource-nav {
+                top: 0;
+                position: relative;
+            }
+            
+            .resource-section {
+                padding: 3rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="Screenshot 2025-03-08 132807.png" alt="ReLaunchHer Logo">
+                Re<span>LaunchHer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="relaunchher.html">Home</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="signup.html" class="btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Resources for Your Career Relaunch</h1>
+            <p>Access tools, guides, and expert advice to help you navigate your return-to-work journey with confidence and success.</p>
+        </div>
+    </section>
+
+    <!-- Resource Categories Navigation -->
+    <div class="resource-nav">
+        <div class="resource-nav-container">
+            <a href="#daily-routine" class="active">Daily Routines</a>
+            <a href="#skill-development">Skill Development</a>
+            <a href="#personal-branding">Personal Branding</a>
+            <a href="#job-search">Job Search</a>
+            <a href="#interview-prep">Interview Prep</a>
+            <a href="#work-life-balance">Work-Life Balance</a>
+        </div>
+    </div>
+
+    <!-- Daily Routine Section -->
+    <section id="daily-routine" class="resource-section">
+        <div class="section-title">
+            <h2>Managing Your Daily Routine</h2>
+            <p>Establishing structure and balance as you prepare for your return to the workforce.</p>
+        </div>
+        
+        <div class="resource-list">
+            <h3 class="list-title">Creating an Effective Return-to-Work Routine</h3>
+            <ul class="step-list">
+                <li>
+                    <h4>Morning Preparation</h4>
+                    <p>Start your day with purpose by waking up at a consistent time, setting intentions, and planning your day. Try to wake up 30-60 minutes before your household to focus on yourself first.</p>
+                </li>
+                <li>
+                    <h4>Dedicated Skill Development Time</h4>
+                    <p>Reserve 1-2 hours daily for upskilling activities such as online courses, reading industry publications, or practicing technical skills. Consistency is more important than duration.</p>
+                </li>
+                <li>
+                    <h4>Job Search Block</h4>
+                    <p>Allocate specific time (30-60 minutes daily) for job search activities including researching companies, tailoring your resume, and applying to positions. This prevents job searching from consuming your entire day.</p>
+                </li>
+                <li>
+                    <h4>Networking Time</h4>
+                    <p>Schedule 15-30 minutes daily to maintain professional connections through LinkedIn engagement, following up with contacts, or reaching out to potential mentors.</p>
+                </li>
+                <li>
+                    <h4>Family/Personal Time Blocks</h4>
+                    <p>Deliberately schedule quality time with family and for self-care to maintain balance and prevent burnout. Create clear boundaries between career preparation and personal time.</p>
+                </li>
+                <li>
+                    <h4>Weekly Review and Planning</h4>
+                    <p>End each week with a 30-minute review of your progress and plan for the upcoming week. Celebrate small wins and adjust as needed.</p>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="tips-container" style="margin-top: 2rem;">
+            <div class="tip-card">
+                <h4>Time Blocking Technique</h4>
+                <p>Rather than multitasking, dedicate focused blocks of time to specific tasks. Use the Pomodoro technique (25 minutes of focused work followed by a 5-minute break) to maintain productivity.</p>
+            </div>
+            <div class="tip-card">
+                <h4>Transition Preparation</h4>
+                <p>If you've been out of the workforce for a while, gradually adjust your schedule to match typical work hours. This helps ease the transition when you start your new role.</p>
+            </div>
+            <div class="tip-card">
+                <h4>Childcare Planning</h4>
+                <p>Begin researching and testing childcare arrangements before you actually need them. This allows you to resolve issues and helps children adjust gradually to new routines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Development Section -->
+    <section id="skill-development" class="resource-section">
+        <div class="section-title">
+            <h2>Skill Development Resources</h2>
+            <p>Tools and platforms to refresh your existing skills and develop new ones for today's job market.</p>
+        </div>
+        
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="resource-card-img">📚</div>
+                <div class="resource-card-content">
+                    <h3>Free and Low-Cost Learning</h3>
+                    <p>Access courses in business, technology, creative arts, and more to update your skills and add credentials to your resume.</p>
+                    <a href="#" class="resource-link">Coursera for Returners →</a><br>
+                    <a href="#" class="resource-link">LinkedIn Learning →</a><br>
+                    <a href="#" class="resource-link">Google Digital Skills →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-card-img">💻</div>
+                <div class="resource-card-content">
+                    <h3>Technical Skills</h3>
+                    <p>Build technical competencies that are in-demand across multiple industries and roles.</p>
+                    <a href="#" class="resource-link">Microsoft Office Training →</a><br>
+                    <a href="#" class="resource-link">Data Analysis Basics →</a><br>
+                    <a href="#" class="resource-link">Digital Marketing Fundamentals →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-card-img">🗣️</div>
+                <div class="resource-card-content">
+                    <h3>Soft Skills Development</h3>
+                    <p>Enhance critical soft skills that employers value and that transfer across roles and industries.</p>
+                    <a href="#" class="resource-link">Communication Skills Workshop →</a><br>
+                    <a href="#" class="resource-link">Leadership for Returners →</a><br>
+                    <a href="#" class="resource-link">Time Management Tools →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-card-img">🏆</div>
+                <div class="resource-card-content">
+                    <h3>Micro-Credentials</h3>
+                    <p>Earn certificates to demonstrate your knowledge and commitment to professional development.</p>
+                    <a href="#" class="resource-link">Project Management Certification →</a><br>
+                    <a href="#" class="resource-link">Digital Skills Badges →</a><br>
+                    <a href="#" class="resource-link">Industry-Specific Credentials →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Branding Section -->
+    <section id="personal-branding" class="resource-section">
+        <div class="section-title">
+            <h2>Personal Branding & Online Presence</h2>
+            <p>Resources to help you build a compelling professional presence online and offline.</p>
+        </div>
+        
+        <div class="resource-list">
+            <h3 class="list-title">Creating an Effective LinkedIn Profile</h3>
+            <ul class="step-list">
+                <li>
+                    <h4>Professional Photo</h4>
+                    <p>Upload a clear, professional headshot where you're smiling and dressed appropriately for your industry. This increases profile views by up to 14 times.</p>
+                </li>
+                <li>
+                    <h4>Compelling Headline</h4>
+                    <p>Go beyond just a job title. Include keywords and highlight your unique value proposition. For example: "Marketing Professional | Brand Strategist | Helping Companies Connect with Their Audience"</p>
+                </li>
+                <li>
+                    <h4>Strategic Summary</h4>
+                    <p>Write in first person and tell your career story, including your break. Highlight your passion, key skills, and what you're looking for now. Keep it to 3-5 short paragraphs.</p>
+                </li>
+                <li>
+                    <h4>Experience Section</h4>
+                    <p>List your previous roles with accomplishments, not just responsibilities. For your career gap, consider adding entries for relevant volunteer work, freelance projects, or education during this time.</p>
+                </li>
+                <li>
+                    <h4>Skills & Endorsements</h4>
+                    <p>Add 5-10 key skills relevant to your target roles. Ask former colleagues to endorse you and consider taking LinkedIn's skill assessments to earn badges.</p>
+                </li>
+                <li>
+                    <h4>Regular Activity</h4>
+                    <p>Post or share content at least weekly. Comment thoughtfully on industry posts. This keeps you visible in your network's feed and demonstrates your engagement in your field.</p>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="resource-grid" style="margin-top: 2rem;">
+            <div class="resource-card">
+                <div class="resource-card-img">📝</div>
+                <div class="resource-card-content">
+                    <h3>Resume Guidance</h3>
+                    <p>Learn how to effectively present your career break and highlight transferable skills on your resume.</p>
+                    <a href="#" class="resource-link">Resume Templates for Returners →</a><br>
+                    <a href="#" class="resource-link">Career Gap Explanation Examples →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-card-img">🔍</div>
+                <div class="resource-card-content">
+                    <h3>Personal Website Creation</h3>
+                    <p>Stand out by creating a personal website that showcases your portfolio, skills, and professional brand.</p>
+                    <a href="#" class="resource-link">Portfolio Website Templates →</a><br>
+                    <a href="#" class="resource-link">Personal Branding Guide →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Search Section -->
+    <section id="job-search" class="resource-section">
+        <div class="section-title">
+            <h2>Job Search Strategies</h2>
+            <p>Effective approaches to finding family-friendly opportunities that match your skills and goals.</p>
+        </div>
+        
+        <div class="resource-list">
+            <h3 class="list-title">Resources for Finding Family-Friendly Employers</h3>
+            <ul class="links-list">
+                <li>
+                    <h4>FlexJobs Directory</h4>
+                    <p>A curated platform specializing in remote, flexible, and part-time positions across industries.</p>
+                    <a href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChsSEwijrLqVl_qLAxXVpWYCHT5GOCsYACICCAEQABoCc20&ae=2&aspm=1&co=1&ase=5&gclid=Cj0KCQiA8q--BhDiARIsAP9tKI1ihfZQYvlXf056aRVHQ2IAjoCuWn7EEnSTee8v7oJpoStNZb3iSRoaApt_EALw_wcB&ohost=www.google.com&cid=CAESV-D2gpMFxwsSdMRaCme-SOtFkV2kVHLCjtS47nqOo6tVWxOwI0o_58vRS0rnxKGjWvFVAIpgPHGGPMtAsk4D41lUJGruGgx4dH73x-YfaIIe_qSCkJJCSg&sig=AOD64_2xC50hM92YpmVBdpNPaedrUukO2Q&q&adurl&ved=2ahUKEwiAlq-Vl_qLAxWlTWwGHZihHkgQ0Qx6BAgYEAE" class="resource-link">Visit FlexJobs →</a>
+                </li>
+                <li>
+                    <h4>Working Mother 100 Best Companies</h4>
+                    <p>Annual list of companies with exemplary programs and policies for working parents.</p>
+                    <a href="https://seramount.com/best-companies/100-best-companies-winners-2022/" class="resource-link">View the Latest List →</a>
+                </li>
+                <li>
+                    <h4>ReLaunchHer Employer Partners</h4>
+                    <p>Browse our network of vetted employers committed to supporting women returning to the workforce.</p>
+                    <a href="#" class="resource-link">Explore Partner Companies →</a>
+                </li>
+                <li>
+                    <h4>Mom Project</h4>
+                    <p>Platform connecting women with companies that value work-life integration.</p>
+                    <a href="https://themomproject.com/" class="resource-link">Explore Opportunities →</a>
+                </li>
+                <li>
+                    <h4>Returnship Programs Directory</h4>
+                    <p>Comprehensive list of companies offering returnship programs specifically designed for professionals returning after a career break.</p>
+                    <a href="#" class="resource-link">View Returnship Programs →</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Interview Prep Section -->
+    <section id="interview-prep" class="resource-section">
+        <div class="section-title">
+            <h2>Interview Preparation</h2>
+            <p>Tools and strategies to help you approach interviews with confidence and clarity.</p>
+        </div>
+        
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="resource-card-img">🎯</div>
+                <div class="resource-card-content">
+                    <h3>Addressing Career Gaps</h3>
+                    <p>Learn techniques for confidently discussing your career break in interviews, turning potential concerns into strengths.</p>
+                    <a href="#" class="resource-link">Career Gap Response Templates →</a><br>
+                    <a href="#" class="resource-link">Video Workshop: Discussing Your Break →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-card-img">👥</div>
+                <div class="resource-card-content">
+                    <h3>Mock Interview Platform</h3>
+                    <p>Practice with our AI-powered interview simulator or schedule a session with a career coach specialized in returnships.</p>
+                    <a href="#" class="resource-link">AI Interview Practice →</a><br>
+                    <a href="#" class="resource-link">Book a Coach Session →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-card-img">📋</div>
+                <div class="resource-card-content">
+                    <h3>Common Questions Library</h3>
+                    <p>Review industry-specific interview questions with example answers tailored for returners.</p>
+                    <a href="#" class="resource-link">Industry Question Database →</a><br>
+                    <a href="#" class="resource-link">STAR Method Answer Builder →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-card-img">📊</div>
+                <div class="resource-card-content">
+                    <h3>Salary Negotiation</h3>
+                    <p>Resources to help you navigate compensation discussions and ensure you're valued fairly despite a career break.</p>
+                    <a href="#" class="resource-link">Salary Research Tools →</a><br>
+                    <a href="#" class="resource-link">Negotiation Scripts →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work-Life Balance Section -->
+    <section id="work-life-balance" class="resource-section">
+        <div class="section-title">
+            <h2>Work-Life Balance</h2>
+            <p>Strategies and resources for maintaining harmony between your career and personal responsibilities.</p>
+        </div>
+        
+        <div class="tips-container">
+            <div class="tip-card">
+                <h4>Setting Boundaries</h4>
+                <p>Learn how to establish healthy boundaries between work and home life, including communication strategies with employers and family members.</p>
+                <a href="#" class="resource-link">Boundary-Setting Workshop →</a>
+            </div>
+            <div class="tip-card">
+                <h4>Childcare Solutions</h4>
+                <p>Resources to help you find, vet, and arrange reliable childcare options that work with your professional schedule.</p>
+                <a href="#" class="resource-link">Childcare Options Guide →</a>
+            </div>
+            <div class="tip-card">
+                <h4>Time Management</h4>
+                <p>Tools and techniques to maximize productivity and efficiency so you can excel at work while being present at home.</p>
+                <a href="#" class="resource-link">Time Management for Working Parents →</a>
+            </div>
+        </div>
+        
+        <div class="resource-list" style="margin-top: 2rem;">
+            <h3 class="list-title">Support Networks and Community Resources</h3>
+            <ul class="links-list">
+                <li>
+                    <h4>ReLaunchHer Community Forums</h4>
+                    <p>Connect with other women at similar stages in their return-to-work journey to share experiences and advice.</p>
+                    <a href="#" class="resource-link">Join the Community →</a>
+                </li>
+                <li>
+                    <h4>Mentorship Matching</h4>
+                    <p>Get paired with a mentor who has successfully navigated a return to work and can provide personalized guidance.</p>
+                    <a href="#" class="resource-link">Apply for Mentorship →</a>
+                </li>
+                <li>
+                    <h4>Local Support Groups</h4>
+                    <p>Find in-person networking and support groups in your area specifically for women returning to work.</p>
+                    <a href="#" class="resource-link">Find Local Groups →</a>
+                </li>
+                <li>
+                    <h4>Family Resource Centers</h4>
+                    <p>Directory of community resources that provide support for working families.</p>
+                    <a href="#" class="resource-link">Family Resource Directory →</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="join-community">
+        <div class="join-content">
+            <h2>You Don't Have to Navigate This Journey Alone</h2>
+            <p>Join our supportive community of thousands of women who are successfully balancing meaningful careers with family responsibilities.</p>
+            <a href="#" class="btn">Join the ReLaunchHer Community Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ReLaunchHer</h3>
+                <p>Empowering women to return to work with confidence, skills, and support.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="relaunchher.html">Home</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#daily-routine">Daily Routines</a></li>
+                    <li><a href="#skill-development">Skill Development</a></li>
+                    <li><a href="#personal-branding">Personal Branding</a></li>
+                    <li><a href="#job-search">Job Search</a></li>
+                    <li><a href="#interview-prep">Interview Preparation</a></li>
+                </ul>
+            </div>

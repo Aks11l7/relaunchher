@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReLaunchHer | Find Your Perfect Job Opportunity</title>
+    <link rel="icon" href="Screenshot 2025-03-08 132807.png" type="image/png">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #8e44ad;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8e44ad;
+        }
+        
+        .logo span {
+            color: #333;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #6c3483;
+        }
+        
+        .btn {
+            background-color: #8e44ad;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #6c3483;
+            color: white;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 8rem 5% 5rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Search section */
+        .search-section {
+            padding: 3rem 5%;
+            background-color: #f5f5f5;
+        }
+        
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .search-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .search-title {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            align-self: flex-end;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-btn:hover {
+            background-color: #6c3483;
+        }
+        
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .filter-tag {
+            background-color: #f0e6f5;
+            color: #8e44ad;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .filter-tag:hover {
+            background-color: #e1d0eb;
+        }
+        
+        .filter-tag.active {
+            background-color: #8e44ad;
+            color: white;
+        }
+        
+        /* Jobs section */
+        .jobs-section {
+            padding: 3rem 5%;
+        }
+        
+        .jobs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .job-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .job-tab {
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .job-tab.active {
+            color: #8e44ad;
+        }
+        
+        .job-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #8e44ad;
+        }
+        
+        .job-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .job-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .company-name {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        .job-type {
+            display: inline-block;
+            background-color: #f0e6f5;
+            color: #8e44ad;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .job-type.remote {
+            background-color: #e6f5f0;
+            color: #2a9d8f;
+        }
+        
+        .job-type.flexible {
+            background-color: #f5f0e6;
+            color: #e67e22;
+        }
+        
+        .job-details {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        
+        .job-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .job-footer p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Remote Jobs Section */
+        .wfh-section {
+            padding: 3rem 5%;
+            background-color: #f5f5f5;
+        }
+        
+        .featured-section {
+            padding: 3rem 5%;
+        }
+        
+        .featured-jobs {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: white;
+            color: #333;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .page-link:hover, .page-link.active {
+            background-color: #8e44ad;
+            color: white;
+        }
+        
+        /* Partner section */
+        .partners {
+            padding: 4rem 5%;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .partners-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .partner-logo {
+            height: 80px;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            color: #999;
+        }
+        
+        /* CTA section */
+        .cta {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 4rem 5% 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .job-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="relaunchher.html" class="logo">
+                <img src="Screenshot 2025-03-08 132807.png" alt="ReLaunchHer Logo">
+                Re<span>LaunchHer</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="relaunchher.html">Home</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="signup.html" class="btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Career Opportunity</h1>
+            <p>Discover flexible, family-friendly positions that value your experience and skills, whether you're looking for in-office, hybrid, or remote work.</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <div class="search-title">
+                    <h2>Job Search</h2>
+                </div>
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="keywords">Keywords or Job Title</label>
+                        <input type="text" id="keywords" placeholder="E.g., Marketing, Project Manager">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" placeholder="City, State or Remote">
+                    </div>
+                    <button type="submit" class="search-btn">Search Jobs</button>
+                </form>
+                <div class="filter-tags">
+                    <div class="filter-tag active">All Jobs</div>
+                    <div class="filter-tag">Full-time</div>
+                    <div class="filter-tag">Part-time</div>
+                    <div class="filter-tag">Remote</div>
+                    <div class="filter-tag">Hybrid</div>
+                    <div class="filter-tag">Returnship</div>
+                    <div class="filter-tag">Family-Friendly</div>
+                    <div class="filter-tag">Flexible Hours</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="jobs-section">
+        <div class="jobs-container">
+            <div class="section-header">
+                <h2>Latest Opportunities</h2>
+                <div class="jobs-found">Showing 82 jobs</div>
+            </div>
+            <div class="job-tabs">
+                <div class="job-tab active">All Jobs</div>
+                <div class="job-tab">In-Office</div>
+                <div class="job-tab">Hybrid</div>
+                <div class="job-tab">Remote</div>
+                <div class="job-tab">Returnships</div>
+            </div>
+            <div class="job-cards">
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">TechCo</div>
+                        <div>
+                            <h3 class="job-title">UX/UI Designer</h3>
+                            <p class="company-name">TechCo Solutions</p>
+                            <span class="job-type hybrid">Hybrid</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Mumbai, CA (2 days in-office)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$85,000 - $110,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>Flexible hours, core hours 11am-3pm</span>
+                        </div>
+                        <p>Create user-centered designs for digital products. Ideal for creative professionals with 3+ years pre-break experience. Supportive team environment with mentorship.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 2 days ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Health</div>
+                        <div>
+                            <h3 class="job-title">Healthcare Administrator</h3>
+                            <p class="company-name">HealthFirst Partners</p>
+                            <span class="job-type">Full-time</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Chennai, IL</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$70,000 - $85,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>9am-5pm, some flexibility</span>
+                        </div>
+                        <p>Manage operations for growing healthcare practice. Previous administrative experience valued. Supportive environment for returners with healthcare background.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 3 days ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Edu</div>
+                        <div>
+                            <h3 class="job-title">Curriculum Developer</h3>
+                            <p class="company-name">EduLearn Inc.</p>
+                            <span class="job-type remote">Remote</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Remote (US-based)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$65,000 - $80,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>Flexible schedule, 30 hours/week</span>
+                        </div>
+                        <p>Develop educational content for K-12 students. Perfect for former educators returning to workforce. 100% remote with collaborative team environment.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 1 week ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Finance</div>
+                        <div>
+                            <h3 class="job-title">Financial Analyst</h3>
+                            <p class="company-name">GrowthCapital Partners</p>
+                            <span class="job-type flexible">Part-time</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Bangalore, MA (1 day in-office)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$45,000 - $55,000 (20 hrs/week)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>Flexible schedule, 20 hours/week</span>
+                        </div>
+                        <p>Analyze financial data and prepare reports. Great opportunity for finance professionals seeking part-time work. Potential to grow to full-time.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 5 days ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Media</div>
+                        <div>
+                            <h3 class="job-title">Content Marketing Specialist</h3>
+                            <p class="company-name">MediaPulse Digital</p>
+                            <span class="job-type remote">Remote</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Remote (Worldwide)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$60,000 - $75,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>Flexible schedule, asynchronous work</span>
+                        </div>
+                        <p>Create engaging content for various platforms. Perfect for marketing professionals returning to work. Global team with inclusive culture.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 4 days ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Sales</div>
+                        <div>
+                            <h3 class="job-title">Inside Sales Representative</h3>
+                            <p class="company-name">SalesDrive Solutions</p>
+                            <span class="job-type">Hybrid</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Andheri, TX (2 days in-office)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$50,000 + Commission</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>9am-4pm, school-hours friendly</span>
+                        </div>
+                        <p>Build relationships with potential clients via phone and email. Previous sales experience valued. Training provided for returners to refresh skills.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 1 week ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">5</a>
+                <a href="#" class="page-link">»</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Remote Work Section -->
+    <section class="wfh-section">
+        <div class="jobs-container">
+            <div class="section-header">
+                <h2>Work From Home Opportunities</h2>
+                <a href="#">View All Remote Jobs</a>
+            </div>
+            <div class="job-cards">
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Tech</div>
+                        <div>
+                            <h3 class="job-title">Customer Success Manager</h3>
+                            <p class="company-name">CloudConnect Software</p>
+                            <span class="job-type remote">Remote</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Remote (ind-based)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$70,000 - $85,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>Flexible hours, core hours 10am-2pm ET</span>
+                        </div>
+                        <p>Support enterprise clients and ensure successful product adoption. Great for client-facing professionals with excellent communication skills.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 3 days ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Write</div>
+                        <div>
+                            <h3 class="job-title">Technical Writer</h3>
+                            <p class="company-name">DocuTech Systems</p>
+                            <span class="job-type remote">Remote</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Remote (Worldwide)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$65,000 - $80,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>Flexible schedule, project-based</span>
+                        </div>
+                        <p>Create technical documentation for software products. Ideal for detail-oriented professionals with strong writing skills. Fully remote with async collaboration.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 5 days ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">HR</div>
+                        <div>
+                            <h3 class="job-title">HR Coordinator</h3>
+                            <p class="company-name">PeopleFirst Solutions</p>
+                            <span class="job-type remote">Remote</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>Remote (US-based)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💰</span>
+                            <span>$55,000 - $65,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>25-30 hours/week, flexible schedule</span>
+                        </div>
+                        <p>Support HR operations including onboarding, benefits, and employee relations. Perfect for HR professionals seeking work-life balance.</p>
+                    </div>
+                    <div class="job-footer">
+                        <p>Posted 1 week ago</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Returnships -->
+    <section class="featured-section">
+        <div class="featured-jobs">
+            <div class="section-header">
+                <h2>Featured Returnship Programs</h2>
+                <a href="#">Learn About Returnships</a>
+            </div>
+            <div class="featured-grid">
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">Tech</div>
+                        <div>
+                            <h3 class="job-title">Software Engineer Returnship</h3>
+                            <p class="company-name">InnovateTech Inc.</p>
+                            <span class="job-type">Returnship</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
